@@ -30,17 +30,14 @@ function checkCollisions() {
 
 function createParticle() {
   let particle = {};
-  particle.position = createVector(
-    Math.random() * width,
-    Math.random() * height
-  );
+  particle.position = createVector(random(width), random(height));
   particle.direction = createVector(Math.random(), Math.random());
   particle.update = function () {
     this.position.add(this.direction);
     if (this.position.x > width || this.position.x < 0)
-      this.position.x = width / 2;
+      this.position.x = random(width); // Regenerate x position
     if (this.position.y > height || this.position.y < 0)
-      this.position.y = height / 2;
+      this.position.y = random(height); // Regenerate y position
     if (this.counter > 0) this.counter -= 1;
   };
   particle.counter = 0;
